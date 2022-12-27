@@ -1,0 +1,147 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="Executable_1" target="8" version="2">
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 2"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 2 balanced" />
+  <project Name="Executable_1">
+    <configuration
+      LIBRARY_IO_TYPE="RTT"
+      Name="Common"
+      Target="MIMXRT1064CVL5A"
+      arm_architecture="v7EM"
+      arm_compiler_variant="SEGGER"
+      arm_core_type="Cortex-M7"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv5-D16"
+      arm_linker_heap_size="1024"
+      arm_linker_process_stack_size="1024"
+      arm_linker_stack_size="2048"
+      arm_linker_variant="SEGGER"
+      arm_rtl_variant="SEGGER"
+      arm_simulator_memory_simulation_parameter="RAM;0x00000000;0x00020000;RAM;0x20000000;0x00020000;RAM;0x20200000;0x000C0000;ROM;0x70000000;0x00400000"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_device_name="MIMXRT1064xxx5A"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="XIP_BOOT_HEADER_ENABLE=1;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_DCD_ENABLE=1;SKIP_SYSCLK_INIT;CPU_MIMXRT1064CVL5A;__MIMXRT1064_FAMILY;ARM_MATH_CM7"
+      c_user_include_directories="$(ProjectDir)/CMSIS_5/CMSIS/Core/Include;$(ProjectDir)/MIMXRT1064/CMSIS/Device/Include"
+      debug_register_definition_file="$(ProjectDir)/MIMXRT1064_Registers.xml"
+      debug_stack_pointer_start="__stack_end__"
+      debug_start_from_entry_point_symbol="No"
+      debug_target_connection="J-Link"
+      gcc_entry_point="Reset_Handler"
+      link_linker_script_file="$(ProjectDir)/MIMXRT1064_Flash.icf"
+      linker_memory_map_file="$(ProjectDir)/MIMXRT1064CVL5A_MemoryMap.xml"
+      macros="DeviceHeaderFile=$(PackagesDir)/MIMXRT1064/CMSIS/Device/Include/fsl_device_registers.h;DeviceLibraryIdentifier=M7lfdp;DeviceSystemFile=$(PackagesDir)/MIMXRT1064/CMSIS/Device/Source/system_MIMXRT1064.c;DeviceVectorsFile=$(PackagesDir)/MIMXRT1064/Source/MIMXRT1064_Vectors.s;DeviceFamily=MIMXRT1064;Target=MIMXRT1064CVL5A"
+      project_directory=""
+      project_type="Executable"
+      target_reset_script="Reset();"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration
+      Name="Debug"
+      c_user_include_directories="$(ProjectDir);$(ProjectDir)/Source/include;$(ProjectDir)/Source/portable/GCC/ARM_CM7/r0p1;$(ProjectDir)/" />
+    <folder Name="CMSIS Files">
+      <file file_name="MIMXRT1064/CMSIS/Device/Source/clock_config.c" />
+      <file file_name="MIMXRT1064/CMSIS/Device/Source/evkmimxrt1064_flexspi_nor_config.c" />
+      <file file_name="MIMXRT1064/CMSIS/Device/Source/evkmimxrt1064_sdram_ini_dcd.c" />
+      <file file_name="MIMXRT1064/CMSIS/Device/Source/fsl_clock.c" />
+      <file file_name="MIMXRT1064/CMSIS/Device/Include/fsl_device_registers.h" />
+      <file file_name="MIMXRT1064/CMSIS/Device/Source/fsl_flexspi_nor_boot.c" />
+      <file file_name="MIMXRT1064/CMSIS/Device/Source/system_MIMXRT1064.c">
+        <configuration
+          Name="Common"
+          default_code_section=".init"
+          default_const_section=".init_rodata" />
+      </file>
+    </folder>
+    <folder Name="FreeRTOS">
+      <folder Name="Source">
+        <folder Name="include">
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/FreeRTOS.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/StackMacros.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/atomic.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/croutine.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/deprecated_definitions.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/event_groups.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/list.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/message_buffer.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/mpu_prototypes.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/mpu_wrappers.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/portable.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/projdefs.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/queue.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/semphr.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/stack_macros.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/stdint.readme" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/stream_buffer.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/task.h" />
+          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/timers.h" />
+        </folder>
+        <folder Name="portable">
+          <folder Name="GCC">
+            <folder Name="ARM_CM7">
+              <folder Name="r0p1">
+                <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.c" />
+                <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h" />
+              </folder>
+              <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/GCC/ARM_CM7/ReadMe.txt" />
+            </folder>
+          </folder>
+          <folder Name="MemMang">
+            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/ReadMe.url" />
+            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_1.c" />
+            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_2.c">
+              <configuration Name="Debug" build_exclude_from_build="Yes" />
+            </file>
+            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_3.c">
+              <configuration Name="Debug" build_exclude_from_build="Yes" />
+            </file>
+            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_4.c">
+              <configuration Name="Debug" build_exclude_from_build="Yes" />
+            </file>
+            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_5.c">
+              <configuration Name="Debug" build_exclude_from_build="Yes" />
+            </file>
+          </folder>
+        </folder>
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/CMakeLists.txt" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/croutine.c" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/event_groups.c" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/list.c" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/manifest.yml" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/queue.c" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/sbom.spdx" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/stream_buffer.c" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/tasks.c" />
+        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/timers.c" />
+      </folder>
+    </folder>
+    <folder Name="Script Files">
+      <file file_name="MIMXRT1064/Scripts/MIMXRT1064_Target.js">
+        <configuration Name="Common" file_type="Reset Script" />
+      </file>
+    </folder>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="/media/graeme/USB STICK/FreeRTOSConfig.h" />
+      <file file_name="cmsis_os2.c" />
+      <file file_name="main.c" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="MIMXRT1064/Source/MIMXRT1064_Startup.s" />
+      <file file_name="MIMXRT1064/Source/MIMXRT1064_Vectors.s">
+        <configuration Name="Common" file_type="Assembly" />
+      </file>
+      <file file_name="SEGGER_THUMB_Startup.s" />
+    </folder>
+  </project>
+</solution>
