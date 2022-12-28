@@ -64,66 +64,12 @@
       </file>
     </folder>
     <folder Name="FreeRTOS">
-      <folder Name="Source">
-        <folder Name="include">
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/FreeRTOS.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/StackMacros.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/atomic.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/croutine.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/deprecated_definitions.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/event_groups.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/list.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/message_buffer.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/mpu_prototypes.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/mpu_wrappers.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/portable.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/projdefs.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/queue.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/semphr.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/stack_macros.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/stdint.readme" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/stream_buffer.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/task.h" />
-          <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/include/timers.h" />
-        </folder>
-        <folder Name="portable">
-          <folder Name="GCC">
-            <folder Name="ARM_CM7">
-              <folder Name="r0p1">
-                <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.c" />
-                <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h" />
-              </folder>
-              <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/GCC/ARM_CM7/ReadMe.txt" />
-            </folder>
-          </folder>
-          <folder Name="MemMang">
-            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/ReadMe.url" />
-            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_1.c" />
-            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_2.c">
-              <configuration Name="Debug" build_exclude_from_build="Yes" />
-            </file>
-            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_3.c">
-              <configuration Name="Debug" build_exclude_from_build="Yes" />
-            </file>
-            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_4.c">
-              <configuration Name="Debug" build_exclude_from_build="Yes" />
-            </file>
-            <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/portable/MemMang/heap_5.c">
-              <configuration Name="Debug" build_exclude_from_build="Yes" />
-            </file>
-          </folder>
-        </folder>
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/CMakeLists.txt" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/croutine.c" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/event_groups.c" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/list.c" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/manifest.yml" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/queue.c" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/sbom.spdx" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/stream_buffer.c" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/tasks.c" />
-        <file file_name="../../Downloads/FreeRTOSv202212.00/FreeRTOS/Source/timers.c" />
-      </folder>
+      <folder
+        Name="source"
+        exclude=""
+        filter=""
+        path="Source"
+        recurse="Yes" />
     </folder>
     <folder Name="Script Files">
       <file file_name="MIMXRT1064/Scripts/MIMXRT1064_Target.js">
