@@ -1,0 +1,26 @@
+Output/Debug/Obj/Executable_1/fsl_enet.o: \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/drivers/fsl_enet.c \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/drivers/fsl_enet.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/drivers/fsl_common.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/assert.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/__SEGGER_RTL.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/__SEGGER_RTL_ConfDefaults.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/__SEGGER_RTL_Conf.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/__SEGGER_RTL_Arm_Conf.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/stdbool.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/stdint.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/string.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/stdlib.h \
+  /usr/share/segger_embedded_studio_for_arm_7.10a/include/stddef.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/MIMXRT1064/CMSIS/Device/Include/fsl_device_registers.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/MIMXRT1064/CMSIS/Device/Include/MIMXRT1064.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/CMSIS_5/CMSIS/Core/Include/core_cm7.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/CMSIS_5/CMSIS/Core/Include/cmsis_version.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/CMSIS_5/CMSIS/Core/Include/cachel1_armv7.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/MIMXRT1064/CMSIS/Device/Include/system_MIMXRT1064.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/MIMXRT1064/CMSIS/Device/Include/MIMXRT1064_features.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/drivers/fsl_common_arm.h \
+  /home/graeme/Projects/RT1064_FreeRTOS_Project/drivers/fsl_clock.h

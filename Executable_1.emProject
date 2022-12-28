@@ -48,7 +48,7 @@
       target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
     <configuration
       Name="Debug"
-      c_user_include_directories="$(ProjectDir);$(ProjectDir)/Source/include;$(ProjectDir)/Source/portable/GCC/ARM_CM7/r0p1;$(ProjectDir)/" />
+      c_user_include_directories="$(ProjectDir);$(ProjectDir)/Source/include;$(ProjectDir)/Source/portable/GCC/ARM_CM7/r0p1;$(ProjectDir)/;$(ProjectDir)/drivers" />
     <folder Name="CMSIS Files">
       <file file_name="MIMXRT1064/CMSIS/Device/Source/clock_config.c" />
       <file file_name="MIMXRT1064/CMSIS/Device/Source/evkmimxrt1064_flexspi_nor_config.c" />
@@ -79,6 +79,7 @@
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
       <file file_name="/media/graeme/USB STICK/FreeRTOSConfig.h" />
+      <file file_name="I2C_Hal.c" />
       <file file_name="cmsis_os2.c" />
       <file file_name="main.c" />
     </folder>
@@ -88,6 +89,60 @@
         <configuration Name="Common" file_type="Assembly" />
       </file>
       <file file_name="SEGGER_THUMB_Startup.s" />
+    </folder>
+    <folder Name="drivers">
+      <file file_name="drivers/fsl_clock.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_clock.h" />
+      <file file_name="drivers/fsl_common.c" />
+      <file file_name="drivers/fsl_common.h" />
+      <file file_name="drivers/fsl_common_arm.c" />
+      <file file_name="drivers/fsl_common_arm.h" />
+      <file file_name="drivers/fsl_dmamux.c" />
+      <file file_name="drivers/fsl_dmamux.h" />
+      <file file_name="drivers/fsl_edma.c" />
+      <file file_name="drivers/fsl_edma.h" />
+      <file file_name="drivers/fsl_enet.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_enet.h" />
+      <file file_name="drivers/fsl_enet_cmsis.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_enet_cmsis.h" />
+      <file file_name="drivers/fsl_enet_phy_cmsis.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_enet_phy_cmsis.h" />
+      <file file_name="drivers/fsl_gpio.c" />
+      <file file_name="drivers/fsl_gpio.h" />
+      <file file_name="drivers/fsl_iomuxc.h" />
+      <file file_name="drivers/fsl_lpi2c.c" />
+      <file file_name="drivers/fsl_lpi2c.h" />
+      <file file_name="drivers/fsl_lpi2c_cmsis.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_lpi2c_cmsis.h" />
+      <file file_name="drivers/fsl_lpi2c_edma.c" />
+      <file file_name="drivers/fsl_lpi2c_edma.h" />
+      <file file_name="drivers/fsl_lpspi.c" />
+      <file file_name="drivers/fsl_lpspi.h" />
+      <file file_name="drivers/fsl_lpspi_cmsis.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_lpspi_cmsis.h" />
+      <file file_name="drivers/fsl_lpspi_edma.c" />
+      <file file_name="drivers/fsl_lpspi_edma.h" />
+      <file file_name="drivers/fsl_lpuart.c" />
+      <file file_name="drivers/fsl_lpuart.h" />
+      <file file_name="drivers/fsl_lpuart_cmsis.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="drivers/fsl_lpuart_cmsis.h" />
+      <file file_name="drivers/fsl_lpuart_edma.c" />
+      <file file_name="drivers/fsl_lpuart_edma.h" />
+      <file file_name="drivers/fsl_nic301.h" />
     </folder>
   </project>
 </solution>
