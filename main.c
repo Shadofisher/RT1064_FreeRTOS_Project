@@ -13,6 +13,8 @@ Purpose : Generic application start
 #include <stdio.h>
 #include <stdlib.h>
 #include "clock_config.h"
+#include "Gpio_config.h"
+
 #include "I2C_Hal.h"
 
 
@@ -27,6 +29,8 @@ Purpose : Generic application start
 #include "FreeRTOS.h"
 #include "task.h"
 #include "cmsis_os2.h"
+#include "Gpio_config.h"
+#include "Gpio.h"
 
 osThreadId_t defaultTaskHandle;
 osThreadId_t testTaskHandle;
@@ -83,13 +87,18 @@ void StartDefaultTask(void *argument)
   }
   /* USER CODE END 5 */
 }
+ void GIO_Test(void);
 
 #define LPI2C_CLOCK_SOURCE_SELECT (0U)
 /* Clock divider for master lpi2c clock source */
 #define LPI2C_CLOCK_SOURCE_DIVIDER (5U)
+
+DioConfig_t * gpioConfig;
 int main(void) {
   int i;
   BOARD_InitBootClocks();
+  gpioConfig = Dio_ConfigGet();
+  Gpio_Init(gpioConfig);
   /*Clock setting for LPI2C*/
   CLOCK_SetMux(kCLOCK_Lpi2cMux, LPI2C_CLOCK_SOURCE_SELECT);
   CLOCK_SetDiv(kCLOCK_Lpi2cDiv, LPI2C_CLOCK_SOURCE_DIVIDER);

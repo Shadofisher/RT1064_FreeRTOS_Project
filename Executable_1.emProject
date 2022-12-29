@@ -48,7 +48,7 @@
       target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
     <configuration
       Name="Debug"
-      c_user_include_directories="$(ProjectDir);$(ProjectDir)/Source/include;$(ProjectDir)/Source/portable/GCC/ARM_CM7/r0p1;$(ProjectDir)/;$(ProjectDir)/drivers" />
+      c_user_include_directories="$(ProjectDir);$(ProjectDir)/Source/include;$(ProjectDir)/Source/portable/GCC/ARM_CM7/r0p1;$(ProjectDir)/;$(ProjectDir)/drivers;$(ProjectDir)/HAL" />
     <folder Name="CMSIS Files">
       <file file_name="MIMXRT1064/CMSIS/Device/Source/clock_config.c" />
       <file file_name="MIMXRT1064/CMSIS/Device/Source/evkmimxrt1064_flexspi_nor_config.c" />
@@ -71,6 +71,7 @@
         path="Source"
         recurse="Yes" />
     </folder>
+    <folder Name="HAL" exclude="" filter="" path="HAL" recurse="Yes" />
     <folder Name="Script Files">
       <file file_name="MIMXRT1064/Scripts/MIMXRT1064_Target.js">
         <configuration Name="Common" file_type="Reset Script" />

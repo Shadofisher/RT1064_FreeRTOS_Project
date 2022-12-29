@@ -120,9 +120,9 @@ int32_t HAL_FS_I2CRead (LPI2C_Type * base, uint8_t dev_id, uint16_t RegAddr, uin
 
 void HAL_Init()
 {
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
-  CLOCK_EnableClock(kCLOCK_IomuxcSnvs);       
-  CLOCK_EnableClock(kCLOCK_Xbar1);   
+//  CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+//  CLOCK_EnableClock(kCLOCK_IomuxcSnvs);       
+//  CLOCK_EnableClock(kCLOCK_Xbar1);   
   LPI2C3_init();
 //  FS_InitPin( ACCELINT1port , ACCELINT1pin , PIN_INPUT, PIN_LOW);
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_21_LPI2C3_SDA, 1U); 
