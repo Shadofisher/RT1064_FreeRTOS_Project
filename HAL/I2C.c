@@ -3,6 +3,14 @@
 
 #define NUM_PORTS 4
 
+#define I2C_1 LPI2C1
+#define I2C_2 LPI2C2
+#define I2C_3 LPI2C3
+#define I2C_4 LPI2C4
+
+
+#if 0
+
 uint32_t volatile * const portverid[NUM_PORTS] =
 {
 	(uint32_t *)&LPI2C1->VERID, 
@@ -59,10 +67,28 @@ uint32_t volatile * const portmasterconfig2[NUM_PORTS] =
 	(uint32_t *)&LPI2C4->MCFGR2
 };
 
-uint32_t volatile * const portmasterconfig3[NUM_PORTS] =
+uint32_t volatile * const portmasterdatamatch[NUM_PORTS] =
 {
-	(uint32_t *)&LPI2C1->MCFGR3, 
-	(uint32_t *)&LPI2C2->MCFGR3, 
-	(uint32_t *)&LPI2C3->MCFGR3, 
-	(uint32_t *)&LPI2C4->MCFGR3
+	(uint32_t *)&LPI2C1->MDMR, 
+	(uint32_t *)&LPI2C2->MDMR, 
+	(uint32_t *)&LPI2C3->MDMR, 
+	(uint32_t *)&LPI2C4->MDMR
 };
+
+uint32_t volatile * const portmasterclockconfig0[NUM_PORTS] =
+{
+	(uint32_t *)&LPI2C1->MCCR0, 
+	(uint32_t *)&LPI2C2->MCCR0, 
+	(uint32_t *)&LPI2C3->MCCR0, 
+	(uint32_t *)&LPI2C4->MCCR0
+};
+
+uint32_t volatile * const portmasterclockconfig1[NUM_PORTS] =
+{
+	(uint32_t *)&LPI2C1->MCCR1, 
+	(uint32_t *)&LPI2C2->MCCR1, 
+	(uint32_t *)&LPI2C3->MCCR1, 
+	(uint32_t *)&LPI2C4->MCCR1
+};
+
+#endif
