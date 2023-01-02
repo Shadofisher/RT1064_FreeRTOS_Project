@@ -95,7 +95,7 @@ uint32_t volatile * const portmasterclockconfig1[NUM_PORTS] =
 
 #endif
 
-extern status_t i2c_result;// = kStatus_Fail;
+status_t i2c_result;// = kStatus_Fail;
 int32_t I2CRead (uint32_t  base_address, uint8_t dev_id, uint16_t RegAddr, uint8_t *rxBuff, uint16_t rxCount, bool Addr16)
 {
 	uint8_t RegAddrHi = 	RegAddr>>8;  
