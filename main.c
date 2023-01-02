@@ -14,9 +14,12 @@ Purpose : Generic application start
 #include <stdlib.h>
 #include "clock_config.h"
 #include "Gpio_config.h"
+#include "Capabilities.h"
 
 #include "I2C_Hal.h"
-
+#include "unity.h"
+#include "Fib.h"
+#include "I2C.h"
 
 /*********************************************************************
 *
@@ -32,6 +35,9 @@ Purpose : Generic application start
 #include "Gpio_config.h"
 #include "Gpio.h"
 
+uint32_t  ACCELERMOTER_Master = 0;
+uint32_t  NFC_Master = 0;
+
 osThreadId_t defaultTaskHandle;
 osThreadId_t testTaskHandle;
 
@@ -44,6 +50,13 @@ const osThreadAttr_t defaultTask_attributes = {
 osThreadId_t TestTaskHandle;
 const osThreadAttr_t TestTask_attributes = {
   .name = "defaultTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
+osThreadId_t NFCTaskHandle;
+const osThreadAttr_t NFCTask_attributes = {
+  .name = "NFCTask",
   .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
@@ -62,6 +75,40 @@ void TestTask(void *argument)
 }
 
 
+void StartNFCTask(void * argument)
+{
+  static uint32_t counter = 0;
+  /* Infinite loop */
+  uint8_t rxBuff[10];
+    for(;;)
+  {
+      counter++;
+      osDelay(5);
+      if (NFC_Master != 0)
+      {
+        if (I2CRead(NFC_Master, counter, 0, rxBuff, 1, 1))
+        {
+           //printf("I2C Device Not found at 0x%x \n\r",counter);
+           // printf("\n\r");
+        }else
+        {
+          printf("2C device found..... 0x%x: Tick %d\n\r",counter,xTaskGetTickCount());
+        }
+      }else
+      {
+        printf("No Valid I2C for NFC\n\r");
+        osDelay(1000);
+      }
+      if (counter >= 255)
+      {
+        counter = 0;
+      }
+  }
+  /* USER CODE END 5 */
+
+  
+}
+
 void StartDefaultTask(void *argument)
 {
   static uint32_t counter = 0;
@@ -71,14 +118,20 @@ void StartDefaultTask(void *argument)
   {
       counter++;
       osDelay(5);
-     // printf("DefaultTask: Counter = %d\n\r",counter);
-      if(HAL_FS_I2CRead(IMU_MASTER, counter, 0, rxBuff, 1, 0))
+      if (ACCELERMOTER_Master != 0)
       {
-          //printf("I2C Device Not found at 0x%x \n\r",counter);
-         // printf("\n\r");
+        if (I2CRead(ACCELERMOTER_Master, counter, 0, rxBuff, 1, 0))
+        {
+           //printf("I2C Device Not found at 0x%x \n\r",counter);
+           // printf("\n\r");
+        }else
+        {
+          printf("2C device found..... 0x%x: Tick %d\n\r",counter,xTaskGetTickCount());
+        }
       }else
       {
-        printf("2C device found..... 0x%x: Tick %d\n\r",counter,xTaskGetTickCount());
+        printf("No Valid I2C for accelerometer\n\r");
+        osDelay(1000);
       }
       if (counter >= 255)
       {
@@ -89,23 +142,64 @@ void StartDefaultTask(void *argument)
 }
  void GIO_Test(void);
 
-#define LPI2C_CLOCK_SOURCE_SELECT (0U)
-/* Clock divider for master lpi2c clock source */
-#define LPI2C_CLOCK_SOURCE_DIVIDER (5U)
+void test_FindFunction_WhichIsBroken_ShouldReturnZeroIfItemIsNotInList_WhichWorksEvenInOurBrokenCode(void);
+void test_FindFunction_WhichIsBroken_ShouldReturnTheIndexForItemsInList_WhichWillFailBecauseOurFunctionUnderTestIsBroken(void);
+void test_TheFirst(void);
+void test_eleent0_should_return1(void);
+void test_eleent1_should_return1(void);
+void test_eleent2_should_return2(void);
+void test_eleent5_should_return8(void);
+void test_part_of_sequence (void);
+void test_negative_negative_values_return_0(void);
+void test_overrun_values_return_0(void);
 
 DioConfig_t * gpioConfig;
+I2C_Capabilites_t * I2C_Cap; 
+
+void setUp(void);
 int main(void) {
   int i;
   BOARD_InitBootClocks();
-  gpioConfig = Dio_ConfigGet();
+  gpioConfig = Gpio_ConfigGet();
   Gpio_Init(gpioConfig);
-  /*Clock setting for LPI2C*/
-  CLOCK_SetMux(kCLOCK_Lpi2cMux, LPI2C_CLOCK_SOURCE_SELECT);
-  CLOCK_SetDiv(kCLOCK_Lpi2cDiv, LPI2C_CLOCK_SOURCE_DIVIDER);
-  HAL_Init();
+  I2C_Cap = I2C_GetCapabilities();
+  I2C_SetCapabilities_Init(I2C_Cap);
+  for (i = 0; i < 2; i++)
+  {
+    if (I2C_Cap->I2C_cap & ACCEL)
+    {
+      printf("Setting up acceleroter");
+      ACCELERMOTER_Master = I2C_Cap->I2CBase;
+
+    }else
+    {
+      if (I2C_Cap->I2C_cap & NFC)
+      {
+        printf("Setting up NFC");
+        NFC_Master = I2C_Cap->I2CBase;
+      }
+    }
+    I2C_Cap++;
+  }
+  printf("i2C Caps: 0x%x",I2C_Cap->I2C_cap);
+  I2C_Cap++;
+  printf("i2C Caps: 0x%x",I2C_Cap->I2C_cap);
+
+  UNITY_BEGIN();
+  RUN_TEST(test_eleent0_should_return1);
+  RUN_TEST(test_eleent1_should_return1);
+  RUN_TEST(test_eleent2_should_return2);
+  RUN_TEST(test_eleent5_should_return8);
+  RUN_TEST(test_part_of_sequence);
+  RUN_TEST(test_negative_negative_values_return_0);
+  RUN_TEST(test_overrun_values_return_0);
+
+  UNITY_END();
+
   osKernelInitialize();
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
   testTaskHandle = osThreadNew(TestTask, NULL, &TestTask_attributes);
+  //NFCTaskHandle = osThreadNew(StartNFCTask, NULL, &NFCTask_attributes); fails as device not yet set up on bus
   osKernelStart();
   for(;;);
 }

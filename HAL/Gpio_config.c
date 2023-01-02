@@ -84,12 +84,6 @@ DioConfig_t DioConfig[] =
 /*                                                                       */
   { PORT1_0,        DIO_PULLUP_DISABLED,	  OUTPUT,   	 DIO_HIGH,    	FCN_ALT     ,{IOMUXC_GPIO_EMC_21_LPI2C3_SDA}},   /* PORT1_0, TACLK, CAOUT */
   { PORT1_1,        DIO_PULLUP_DISABLED, 	  OUTPUT,   	 DIO_HIGH,    	FCN_ALT     ,{IOMUXC_GPIO_EMC_22_LPI2C3_SCL}},   /* PORT1_1, CCI0A, TA0 */
-  { PORT1_2,        DIO_PULLUP_DISABLED,	  OUTPUT,   	 DIO_HIGH,    	FCN_GPIO    ,{0,0,0,0,0}},   /* PORT1_2, CCI1A, TA1 */
-  { PORT1_3,        DIO_PULLUP_DISABLED,	  OUTPUT,   	 DIO_HIGH,      FCN_GPIO    ,{0,0,0,0,0}},   /* PORT1_3, CCI2A, TA2*/
-  { PORT1_4,        DIO_PULLUP_DISABLED,	  OUTPUT,   	 DIO_HIGH,    	FCN_GPIO    ,{0,0,0,0,0}},   /* PORT1_4, SMCLK */
-  { PORT1_5,        DIO_PULLUP_DISABLED,	  OUTPUT,        DIO_HIGH,    	FCN_GPIO    ,{0,0,0,0,0}},   /* PORT1_5, TA0 */
-  { PORT1_6,        DIO_PULLUP_DISABLED,	  OUTPUT,        DIO_HIGH,    	FCN_GPIO    ,{0,0,0,0,0}},   /* PORT1_6, TA1 */
-  { PORT1_7,        DIO_PULLUP_DISABLED,	  OUTPUT,   	 DIO_HIGH,    	FCN_GPIO    ,{0,0,0,0,0}},   /* PORT1_7, TA2 */
 };
 
 /******************************************************************************
@@ -138,7 +132,7 @@ DioConfig_t DioConfig[] =
 * <hr>
 *
 *******************************************************************************/
-DioConfig_t * Dio_ConfigGet(void)
+DioConfig_t * Gpio_ConfigGet(void)
 {
 	/* 
 	 * The cast is performed to ensure that the address of the first element of
@@ -149,4 +143,7 @@ DioConfig_t * Dio_ConfigGet(void)
 }
 
 /*************** END OF FUNCTIONS ***************************************************************************/
+
+
+
 #endif

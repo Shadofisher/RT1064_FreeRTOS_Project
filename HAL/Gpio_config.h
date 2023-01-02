@@ -185,7 +185,7 @@ typedef enum
 extern "C"{
 #endif
 
-DioConfig_t * Dio_ConfigGet(void);
+DioConfig_t * Gpio_ConfigGet(void);
 
 #ifdef __cplusplus
 } // extern "C"
