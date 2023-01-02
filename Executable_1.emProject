@@ -82,7 +82,9 @@
       <file file_name="Fib.c" />
       <file file_name="Fib.h" />
       <file file_name="/media/graeme/USB STICK/FreeRTOSConfig.h" />
-      <file file_name="I2C_Hal.c" />
+      <file file_name="I2C_Hal.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
       <file file_name="TestFib.c" />
       <file file_name="TestUnityCode.c" />
       <file file_name="Unitytest.c" />
