@@ -14,7 +14,7 @@ Purpose : Generic application start
 #include <stdlib.h>
 #include "clock_config.h"
 #include "Gpio_config.h"
-#include "Capabilities.h"
+#include "I2C_config.h"
 
 #include "I2C_Hal.h"
 #include "unity.h"
@@ -154,36 +154,37 @@ void test_negative_negative_values_return_0(void);
 void test_overrun_values_return_0(void);
 
 DioConfig_t * gpioConfig;
-I2C_Capabilites_t * I2C_Cap; 
+I2C_Config_t * I2C_Conf; 
 
 void setUp(void);
+
 int main(void) {
   int i;
   BOARD_InitBootClocks();
   gpioConfig = Gpio_ConfigGet();
   Gpio_Init(gpioConfig);
-  I2C_Cap = I2C_GetCapabilities();
-  I2C_SetCapabilities_Init(I2C_Cap);
+  I2C_Conf = I2C_GetConfig();
+  I2C_SetConfig(I2C_Conf);
   for (i = 0; i < 2; i++)
   {
-    if (I2C_Cap->I2C_cap & ACCEL)
+    if (I2C_Conf->I2C_conf & ACCEL)
     {
       printf("Setting up acceleroter");
-      ACCELERMOTER_Master = I2C_Cap->I2CBase;
+      ACCELERMOTER_Master = I2C_Conf->I2CBase;
 
     }else
     {
-      if (I2C_Cap->I2C_cap & NFC)
+      if (I2C_Conf->I2C_conf & NFC)
       {
         printf("Setting up NFC");
-        NFC_Master = I2C_Cap->I2CBase;
+        NFC_Master = I2C_Conf->I2CBase;
       }
     }
-    I2C_Cap++;
+    I2C_Conf++;
   }
-  printf("i2C Caps: 0x%x",I2C_Cap->I2C_cap);
-  I2C_Cap++;
-  printf("i2C Caps: 0x%x",I2C_Cap->I2C_cap);
+  printf("i2C Caps: 0x%x",I2C_Conf->I2C_conf);
+  I2C_Conf++;
+  printf("i2C Caps: 0x%x",I2C_Conf->I2C_conf);
 
   UNITY_BEGIN();
   RUN_TEST(test_eleent0_should_return1);

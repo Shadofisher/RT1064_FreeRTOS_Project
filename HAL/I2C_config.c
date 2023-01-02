@@ -1,27 +1,16 @@
-#include<stdint.h>
-#include "MIMXRT1064.h"
+
 #include "I2C_config.h"
-#include "fsl_lpi2c.h"
-#define NUM_I2C 4
+
+#define LPI2C_CLOCK_FREQ 3000000UL
+#define LPI2C_CLOCK_SOURCE_SELECT (0U)
+/* Clock divider for master lpi2c clock source */
+#define LPI2C_CLOCK_SOURCE_DIVIDER (5U)
 
 
-#define I2C1 (LPI2C1_BASE)
-#define I2C2 (LPI2C1_BASE)
-#define I2C3 (LPI2C1_BASE)
-#define I2C4 (LPI2C1_BASE)
 
-
-typedef enum
-{
-  DEVICE_I2C1,
-  DEVICE_I2C2,
-  DEVICE_I2C3,
-  DEVICE_I2C4,
-} i2c_device_num_t;
-
-lpi2c_master_config_t I2C_masterconfig_def2[]=
-{
-  {  
+I2C_Config_t I2C_Config[] = 
+{ 
+  {LPI2C4_BASE,NFC,{
   .enableMaster = true,
   .enableDoze = true,
   .debugEnable = false,
@@ -37,24 +26,9 @@ lpi2c_master_config_t I2C_masterconfig_def2[]=
     .source = kLPI2C_HostRequestExternalPin,
     .polarity = kLPI2C_HostRequestPinActiveHigh
   }
-},
-  {  .enableMaster = true,
-  .enableDoze = true,
-  .debugEnable = false,
-  .ignoreAck = false,
-  .pinConfig = kLPI2C_2PinOpenDrain,
-  .baudRate_Hz = 100000UL,
-  .busIdleTimeout_ns = 0UL,
-  .pinLowTimeout_ns = 0UL,
-  .sdaGlitchFilterWidth_ns = 0U,
-  .sclGlitchFilterWidth_ns = 0U,
-  .hostRequest = {
-    .enable = false,
-    .source = kLPI2C_HostRequestExternalPin,
-    .polarity = kLPI2C_HostRequestPinActiveHigh
-  }
-},
-  {  
+  }},
+  {LPI2C3_BASE,ACCEL,
+  {
   .enableMaster = true,
   .enableDoze = true,
   .debugEnable = false,
@@ -70,33 +44,31 @@ lpi2c_master_config_t I2C_masterconfig_def2[]=
     .source = kLPI2C_HostRequestExternalPin,
     .polarity = kLPI2C_HostRequestPinActiveHigh
   }
-},
-  {  
-  .enableMaster = true,
-  .enableDoze = true,
-  .debugEnable = false,
-  .ignoreAck = false,
-  .pinConfig = kLPI2C_2PinOpenDrain,
-  .baudRate_Hz = 100000UL,
-  .busIdleTimeout_ns = 0UL,
-  .pinLowTimeout_ns = 0UL,
-  .sdaGlitchFilterWidth_ns = 0U,
-  .sclGlitchFilterWidth_ns = 0U,
-  .hostRequest = {
-    .enable = false,
-    .source = kLPI2C_HostRequestExternalPin,
-    .polarity = kLPI2C_HostRequestPinActiveHigh
-  }
-},
+  }},
 };
 
-
-void I2C_Init(void)
+I2C_Config_t * I2C_GetConfig(void)
 {
-
+  return((I2C_Config_t *)I2C_Config);
 }
 
+void I2C_SetConfig(I2C_Config_t * I2C_Conf)
+{
+  lpi2c_master_config_t * configuration;
+  uint8_t i;
+  CLOCK_SetMux(kCLOCK_Lpi2cMux, LPI2C_CLOCK_SOURCE_SELECT);
+  CLOCK_SetDiv(kCLOCK_Lpi2cDiv, LPI2C_CLOCK_SOURCE_DIVIDER);
 
+
+  for (i =0; i < NUM_I2C_INTERFACES; i++)
+  {
+    //configuration = (lpi2c_master_config_t *)&I2C_Capabilites[i].hw_config;
+    configuration = (lpi2c_master_config_t *)&I2C_Conf->hw_config;
+    LPI2C_MasterInit((LPI2C_Type *)I2C_Conf->I2CBase, (lpi2c_master_config_t *)configuration, LPI2C_CLOCK_FREQ); 
+    I2C_Conf++;
+  }
+  
+}
 
 
 
